@@ -1,0 +1,49 @@
+# Ignore local project settings
+.project.json.backup
+*.screenshots
+*.local
+
+# Ignore user-specific settings
+.settings/
+.idea/
+.vs/
+*.user
+*.suo
+
+# Ignore execution logs
+Logs/
+output.log
+
+# Ignore screenshots and test result data
+*.png
+TestResults/
+Screenshots/
+*.screenshots
+
+# Ignore JSON cache files
+*.json.backup
+
+# Ignore temporary files
+~$*
+*.tmp
+*.bak
+
+# Ignore publish artifacts
+publish/
+
+# Ignore Packages folder (if restored from feed)
+Packages/
+
+# Ignore compiled workflows
+*.nupkg
+*.dll
+
+# Ignore Orchestrator Test reports
+TestReports/
+
+# macOS / Windows junk
+.DS_Store
+Thumbs.db
+
+# UiPath cache (optional, if exists)
+.cache/
