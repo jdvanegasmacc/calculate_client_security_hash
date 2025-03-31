@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Volver a cargar",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "kzFkXK9H00y_mrUVNxkvZQ",
+  "Reference": "BzmegYAMbUuhnYKDpygIjQ/kzFkXK9H00y_mrUVNxkvZQ",
+  "ParentRef": "BzmegYAMbUuhnYKDpygIjQ/ZlyadPj0kEyreL_Xm6m4zQ",
+  "Created": "2025-03-31T04:10:12.0780911Z",
+  "Updated": "2025-03-31T04:10:12.0780911Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.11.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

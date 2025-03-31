@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="G6nccNAptEitRrWCiuQvrQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="acme-test.uipath.com/work-items/105482975" CVScreenId="475d4add-3f2a-4cdc-82f6-cbe5d6056a6e" CvTextArea="491, 602, 98, 16" CvType="AnyWordGroup" DesignTimeRectangle="491, 602, 98, 16" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="415ef48d-2e75-40c0-b3c0-083aafdcae97" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V4" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="475d4add-3f2a-4cdc-82f6-cbe5d6056a6e" CvTextArea="381, 602, 107, 16" CvTextArgument="Client Name:" CvType="Text" DesignTimeRectangle="383, 602, 106, 20" FuzzySelectorArgument="&lt;webctrl type='' tag='B' class='' aaname='Client Name:' check:innerText='Client Name:' /&gt;" Guid="9ec61cc6-8177-450f-9a93-2b72ce69d29e" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="70f9e7395946ec8b4d1a28edce1198d2.png" xmlns="">0FojPVWKbQkKd18dRDI2rxQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetText</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

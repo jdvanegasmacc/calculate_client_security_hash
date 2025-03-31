@@ -1,0 +1,14 @@
+﻿{
+  "Name": "SHA1 and other hash fun…",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "ZGm2uRmSIUSx9NwUJxqsaA",
+  "Reference": "BzmegYAMbUuhnYKDpygIjQ/ZGm2uRmSIUSx9NwUJxqsaA",
+  "ParentRef": "BzmegYAMbUuhnYKDpygIjQ/MvsRcNVrVUeMVpoYM76MqQ",
+  "Created": "2025-03-31T03:24:31.2369245Z",
+  "Updated": "2025-03-31T03:24:31.2369245Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.11.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
