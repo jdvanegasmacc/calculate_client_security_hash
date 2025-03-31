@@ -100,9 +100,9 @@ The formatted string becomes:
 
 ## 👤 Author
 
-**David (aka Mapache / Deivis44)**  
-Passionate about automation, system administration, and learning DevOps with real-world projects.  
-🔗 [GitHub](https://github.com/Deivis44) | 🌐 [Portfolio](https://ukiyo44.neocities.org/)
+**Juan Daniel Vanegas Mayorquin**  
+Automation Developer and Data Scientist Occasional
+🔗 [GitHub](https://github.com/jdvanegasm) | 🌐 [LinkedIn](https://www.linkedin.com/in/jdvanegasm/)
 
 ---
 
@@ -112,7 +112,6 @@ This project is intended for educational and portfolio purposes. Adapt freely, b
 
 # UiPath Readme
 ### Documentation is included in the Documentation folder ###
-
 
 ### REFrameWork Template ###
 **Robotic Enterprise Framework**
