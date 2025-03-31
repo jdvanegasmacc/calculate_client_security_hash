@@ -1,6 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="InitAllApplications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_ACMEBrowser" Type="OutArgument(ui:Browser)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
   <sap:VirtualizedContainerService.HintSize>476,643</sap:VirtualizedContainerService.HintSize>
@@ -95,13 +96,15 @@
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1019.2,2948.7999999999997" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1019.2,3426.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="AcmeUsername" />
       <Variable x:TypeArguments="ss:SecureString" Name="AcmePassword" />
       <Variable x:TypeArguments="x:String" Name="AcmeUrl" />
+      <Variable x:TypeArguments="ui:Browser" Name="uiBrowser_ACME" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -152,13 +155,13 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome Nueva pestaña" sap:VirtualizedContainerService.HintSize="1019.2,2256.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" ScopeGuid="b01e85c5-46d1-4b13-9d46-6e8251622524" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Chrome Nueva pestaña" sap:VirtualizedContainerService.HintSize="1019.2,2734.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="b01e85c5-46d1-4b13-9d46-6e8251622524" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="985.6,2016.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="985.6,2494.4" sap2010:WorkflowViewState.IdRef="Sequence_16">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -171,7 +174,7 @@
                 </InArgument>
               </uix:NGoToUrl.Url>
             </uix:NGoToUrl>
-            <uix:NCheckState DisplayName="Check App State 'Work Items'" sap:VirtualizedContainerService.HintSize="952,570.4" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="b01e85c5-46d1-4b13-9d46-6e8251622524" Version="V4">
+            <uix:NCheckState DisplayName="Check App State 'Work Items'" sap:VirtualizedContainerService.HintSize="952,530.4" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="b01e85c5-46d1-4b13-9d46-6e8251622524" Version="V4">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,280" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <sap:WorkflowViewStateService.ViewState>
@@ -183,7 +186,7 @@
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/home" CVScreenId="827961e9-d7cb-4eaf-a40e-2d578a8aedfa" ContentHash="VhXzizd2T0uigv9migB6pg" CvTextArea="1609, 246, 63, 20" CvTextArgument="Log Out" CvType="Text" DesignTimeRectangle="1591, 225, 100, 63" DesignTimeScaleFactor="1.25" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Log Out' parentid='bs-example-navbar-collapse-1' tag='A' type='' class='' check:innerText='Log Out' /&gt;" Guid="f6b34ee1-9421-4f72-a8bc-1d399e74376c" InformativeScreenshot="bf26616439b9246457e8619472426a39.png" Reference="BzmegYAMbUuhnYKDpygIjQ/M1XEwb9VtkKuja4UzsU0Cg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
                         <uix:TargetAnchorable.Anchors>
-                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                             <uix:Target CVScreenId="827961e9-d7cb-4eaf-a40e-2d578a8aedfa" CvTextArea="1409, 246, 163, 16" CvTextArgument="Switch to new theme" CvType="Text" DesignTimeRectangle="1392, 225, 199, 63" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Switch to new theme' parentid='bs-example-navbar-collapse-1' tag='A' type='' class='' check:innerText='Switch to new theme' /&gt;" Guid="e1b27343-fafa-4aa4-9be7-593e5a76c5df" SearchSteps="FuzzySelector, CV" />
                           </scg:List>
                         </uix:TargetAnchorable.Anchors>
@@ -225,7 +228,7 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/login" CVScreenId="89370773-8519-4bd5-b9e3-1775dcb587d8" ContentHash="jYzNhGRM3EWvhtIaV-YgIg" CvElementArea="333, 593, 610, 48" CvType="InputBox" DesignTimeRectangle="334, 596, 607, 43" DesignTimeScaleFactor="1.25" ElementType="InputBox" FuzzySelectorArgument="&lt;webctrl id='email' tag='INPUT' type='email' class='form-control ' aaname='Email:' /&gt;" Guid="1e8e3c1c-c991-4bf0-9a9b-aed3d256fadb" InformativeScreenshot="a2d93715660b658769ff1418a4033336.png" IsResponsive="True" Reference="BzmegYAMbUuhnYKDpygIjQ/GUGEQXx3C0qZVu_T5WWnpA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Log In' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target CVScreenId="89370773-8519-4bd5-b9e3-1775dcb587d8" CvTextArea="334, 567, 52, 16" CvTextArgument="Email:" CvType="Text" DesignTimeRectangle="334, 565, 53, 25" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Email:' check:innerText='Email:' /&gt;" Guid="8d5f9c85-d3cb-47d2-8ee9-b3fa057eacdb" SearchSteps="FuzzySelector, CV" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
@@ -256,7 +259,7 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/login" CVScreenId="b606ce2a-cab5-4bea-a065-39f9b5f2aeef" ContentHash="NDAAQf4nZEmtdmvB0F93rA" CvElementArea="333, 687, 609, 45" CvType="InputBox" DesignTimeRectangle="334, 689, 607, 42" DesignTimeScaleFactor="1.25" ElementType="InputBoxPassword" FuzzySelectorArgument="&lt;webctrl id='password' tag='INPUT' type='password' class='form-control ' aaname='Password:' /&gt;" Guid="6b872fc2-1c21-44e4-9a93-fa1669266f6a" InformativeScreenshot="2eefe593a2b68e689508399ba29e4cc5.png" Reference="BzmegYAMbUuhnYKDpygIjQ/TnRxh_lHkEusKNl-M_ZBvw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Log In' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target CVScreenId="b606ce2a-cab5-4bea-a065-39f9b5f2aeef" CvTextArea="332, 659, 90, 17" CvTextArgument="Password:" CvType="Text" DesignTimeRectangle="334, 657, 89, 25" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Password:' tag='LABEL' type='' class='' check:innerText='Password:' /&gt;" Guid="6e911e5e-0eb7-4730-ab80-78ed0dc8a447" SearchSteps="FuzzySelector, CV" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
@@ -277,7 +280,7 @@
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/login" CVScreenId="138a2254-d90c-4778-8c3e-044ec89e3551" ContentHash="AyfeFvuGsEOuxShOWRzpzw" CvElementArea="332, 800, 78, 45" CvTextArea="349, 812, 45, 20" CvTextArgument="Login" CvType="Button" DesignTimeRectangle="334, 802, 75, 42" DesignTimeScaleFactor="1.25" ElementType="Button" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='submit' class='btn btn-primary' aaname='                             Login                         ' check:innerText='Login' /&gt;" Guid="882ed1e1-85ba-46d6-bb24-4a1a48c59fe7" InformativeScreenshot="68e6a2d410fbc21edb154acc9ec7ae76.png" Reference="BzmegYAMbUuhnYKDpygIjQ/L5UHGJpkLUuhPBnKjG0CeQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Log In' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target CVScreenId="138a2254-d90c-4778-8c3e-044ec89e3551" CvElementArea="411, 799, 218, 46" CvTextArea="429, 812, 185, 20" CvTextArgument="Forgot Your Password?" CvType="Button" DesignTimeRectangle="414, 802, 214, 42" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='                                 Forgot Your Password?                             ' tag='A' type='' class='btn bg-warning' check:innerText='Forgot Your Password?' /&gt;" Guid="36dd8ee1-d5a9-4314-8d4b-1cec674b94f7" SearchSteps="FuzzySelector, CV" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
@@ -294,18 +297,51 @@
                 </uix:VerifyExecutionOptions>
               </uix:NClick.VerifyOptions>
             </uix:NClick>
-            <uix:NCheckState DisplayName="Check App State 'Work Items'" sap:VirtualizedContainerService.HintSize="952,473.6" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="b01e85c5-46d1-4b13-9d46-6e8251622524" Timeout="10" Version="V4">
+            <uix:NCheckState DisplayName="Check App State 'Work Items'" sap:VirtualizedContainerService.HintSize="952,882.4" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="b01e85c5-46d1-4b13-9d46-6e8251622524" Timeout="10" Version="V4">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,230.4" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,632" sap2010:WorkflowViewState.IdRef="Sequence_17">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info">
                     <ui:LogMessage.Message>
                       <InArgument x:TypeArguments="x:Object">
                         <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">"Succesful Logged in"</CSharpValue>
+                      </InArgument>
+                    </ui:LogMessage.Message>
+                  </ui:LogMessage>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Work Items(1)'" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b01e85c5-46d1-4b13-9d46-6e8251622524" Version="V4">
+                    <uix:NClick.OutUiElement>
+                      <OutArgument x:TypeArguments="ui:UiElement">
+                        <CSharpReference x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">uiBrowser_ACME</CSharpReference>
+                      </OutArgument>
+                    </uix:NClick.OutUiElement>
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="acme-test.uipath.com" CVScreenId="805426ca-f7ad-4d2c-b609-50f310b6c206" ContentHash="1scPGGJVqUyntSxzXCyDtA" CvElementArea="331, 685, 257, 62" CvTextArea="416, 704, 116, 21" CvTextArgument="Work Items" CvType="Button" DesignTimeRectangle="334, 688, 250, 57" DesignTimeScaleFactor="1.25" ElementType="Button" FuzzySelectorArgument="&lt;webctrl aaname='                          Work Items' parentid='dashmenu' tag='BUTTON' type='button' class='btn btn-default btn-lg' check:innerText='Work Items' /&gt;" Guid="ad76c8d3-9a9b-42a5-84dc-f980510d7f0c" InformativeScreenshot="8e2d125a6eb48e82bdfad86f4482ccbd.png" Reference="BzmegYAMbUuhnYKDpygIjQ/GauiL7uz1ES5jIyO27zeSg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CVScreenId="805426ca-f7ad-4d2c-b609-50f310b6c206" CvElementArea="332, 616, 257, 62" CvTextArea="407, 634, 129, 25" CvTextArgument="User options" CvType="Button" DesignTimeRectangle="334, 619, 250, 57" ElementType="Button" FuzzySelectorArgument="&lt;webctrl parentid='dashmenu' tag='BUTTON' type='button' class='btn btn-default btn-lg dropdown-toggle' aaname='                  User options' check:innerText='User options' /&gt;" Guid="276431da-d0a9-4d89-b21a-96e676b520cb" SearchSteps="FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info">
+                    <ui:LogMessage.Message>
+                      <InArgument x:TypeArguments="x:Object">
+                        <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">"Browser finishing Framework - Init all application is " + (uiBrowser_ACME != null ? "OK" : "NULL")</CSharpValue>
                       </InArgument>
                     </ui:LogMessage.Message>
                   </ui:LogMessage>
@@ -328,13 +364,25 @@
               <uix:NCheckState.Target>
                 <uix:TargetAnchorable BrowserURL="acme-test.uipath.com" CVScreenId="9d6ba582-b647-4c66-b7e0-e75e00866d85" ContentHash="JVmGdJL26kCE10Om3zJ2aQ" CvElementArea="331, 685, 257, 62" CvTextArea="416, 704, 116, 21" CvTextArgument="Work Items" CvType="Button" DesignTimeRectangle="334, 688, 250, 57" DesignTimeScaleFactor="1.25" ElementType="Button" FuzzySelectorArgument="&lt;webctrl aaname='                          Work Items' parentid='dashmenu' tag='BUTTON' type='button' class='btn btn-default btn-lg' check:innerText='Work Items' /&gt;" Guid="1edc5ccf-a1a5-4d6d-a762-6886b80d0e81" InformativeScreenshot="6762ab2e1120f2ad0a8251e783a1e864.png" Reference="BzmegYAMbUuhnYKDpygIjQ/Z112rU6My0KsIIhFd2STAg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target CVScreenId="9d6ba582-b647-4c66-b7e0-e75e00866d85" CvTextArea="246, 342, 221, 37" CvTextArgument="Dashboard" CvType="Text" DesignTimeRectangle="247, 338, 1425, 61" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='H1' type='' class='page-header' aaname='                                                 Dashboard                                     ' check:innerText='Dashboard' /&gt;" Guid="9ac7fda8-a070-429e-9964-4666214739bc" SearchSteps="FuzzySelector, CV" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NCheckState.Target>
             </uix:NCheckState>
+            <Assign sap:VirtualizedContainerService.HintSize="952,107.2" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="ui:Browser">
+                  <CSharpReference x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">out_ACMEBrowser</CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="ui:Browser">
+                  <CSharpValue x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">uiBrowser_ACME</CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
